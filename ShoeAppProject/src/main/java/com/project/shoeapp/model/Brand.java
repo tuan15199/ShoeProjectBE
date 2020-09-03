@@ -7,19 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class ShoeType {
+public class Brand {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	@Column(length = 100, nullable = false)
-	private Type type;
+	private String name;
 	
-	@ManyToOne
-	private Catalog catalog;
-	@OneToMany(mappedBy = "type")
-	private List<Product> products;
+	@OneToMany(mappedBy = "brand")
+	List<Catalog> catalog;
 }

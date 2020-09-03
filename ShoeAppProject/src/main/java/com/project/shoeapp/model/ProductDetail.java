@@ -1,25 +1,27 @@
 package com.project.shoeapp.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
-public class Catalog {
+public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column(length = 100, nullable = false)
-	private Type type;
+	private GenderType genderType;
+	@Column(nullable = false)
+	private int quantity;
+	private double star;
 	
 	@ManyToOne
-	private Brand brand;
-	@OneToMany(mappedBy = "catalog")
-	private List<Product> products;
+	private Product product;
+	@OneToOne
+	private Color color;
+	@OneToOne
+	private Size size;
 }
