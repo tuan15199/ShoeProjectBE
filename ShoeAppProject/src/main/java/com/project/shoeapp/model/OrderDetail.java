@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class OrderDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

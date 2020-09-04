@@ -17,7 +17,7 @@ public class Brand {
 	@Column(length = 100, nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy = "brand")
+	@OneToMany
 	List<Catalog> catalog;
 
 	public Integer getId() {

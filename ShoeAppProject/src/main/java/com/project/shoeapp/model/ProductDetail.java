@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class ProductDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,67 +21,52 @@ public class ProductDetail {
 	@Column(nullable = false)
 	private int quantity;
 	private double star;
+	private String color;
+	private int size;
+	private Integer productId;
 	
-	@ManyToOne
-	private Product product;
-	@OneToOne
-	private Color color;
-	@OneToOne
-	private Size size;
-
+	public Integer getProductId() {
+		return productId;
+	}
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public GenderType getGenderType() {
 		return genderType;
 	}
-
 	public void setGenderType(GenderType genderType) {
 		this.genderType = genderType;
 	}
-
 	public int getQuantity() {
 		return quantity;
 	}
-
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
 	public double getStar() {
 		return star;
 	}
-
 	public void setStar(double star) {
 		this.star = star;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
-
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
-
-	public Size getSize() {
+	public int getSize() {
 		return size;
 	}
-
-	public void setSize(Size size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
+	
 }

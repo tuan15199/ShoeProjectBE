@@ -1,5 +1,6 @@
 package com.project.shoeapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,14 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.project.shoeapp.dtos.CatalogDto;
+import com.project.shoeapp.dtos.ProductDetailDto;
+import com.project.shoeapp.dtos.ProductDto;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,8 +32,10 @@ public class Product {
 
 	@ManyToOne
 	private Catalog catalog;
-	@OneToMany(mappedBy = "product")
-	List<ProductDetail> productDetails;
+	@OneToMany
+	List<ProductDetail> productDetails = new ArrayList<ProductDetail>();
+	
+	public Product() {}
 
 	public Integer getId() {
 		return id;
@@ -80,5 +84,12 @@ public class Product {
 	public void setProductDetails(List<ProductDetail> productDetails) {
 		this.productDetails = productDetails;
 	}
+	
+	public Product(ProductDto productDto , Catalog catalog) {
+		this.setName(productDto.getName());
+		this.setPicture(productDto.getPicture());
+		this.setPrice(productDto.getPrice());
+	    this.setCatalog(catalog);
+	 }
 
 }
